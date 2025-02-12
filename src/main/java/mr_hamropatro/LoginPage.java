@@ -24,24 +24,26 @@ public class LoginPage {
         return WebDriverUtil.getDriver(browserType);
     }
 
-    public void profile(WebDriver driver) {
-        WebElement clickOnProfile = this.driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[1]/div[1]/div[1]/header[1]/div[3]/div[1]/div[2]"));
+    public void profile() {
+        WebElement clickOnProfile = this.driver.findElement(By.xpath("//*[@id=\"page-wrapper\"]/div[1]/div/div/header/div[3]/div"));
         clickOnProfile.click();
         System.out.println("Clicked on profile Icon");
     }
 
-    public void loginButton() throws InterruptedException {
-        WebElement clickOnLoginButton = driver.findElement(By.xpath("/html/body/div[6]/div/div[2]/div[4]/div/div/div/div/section/div[2]/div/button"));
+    public void loginButton(){
+        WebElement clickOnLoginButton = this.driver.findElement(By.xpath("/html/body/div[6]/div/div[2]/div[4]/div/div/div/div/section/div[1]/div/button"));
         wait.until(ExpectedConditions.visibilityOf(clickOnLoginButton));
         clickOnLoginButton.click();
         System.out.println("Clicked on login button..");
-        Thread.sleep(3000);
     }
 
     public void googleSignInButton() {
-        WebElement clickOnGoogleSignInButton = driver.findElement(By.xpath("/html/body/div[@role='button' and contains(@class, 'clickable') and contains(@class, 'outline-none') and contains(text(), 'Sign in With Google')]\n"));
-        wait.until(ExpectedConditions.visibilityOf(clickOnGoogleSignInButton));
+        System.out.println("Google Sign in Button");
+        WebElement clickOnGoogleSignInButton = driver.findElement(By.xpath("/html/body/div[17]/div/div[2]/div[4]/div/div/div[1]/div[1]/h3"));
+        wait.until(ExpectedConditions.elementToBeClickable(clickOnGoogleSignInButton));
+        System.out.println(clickOnGoogleSignInButton.isDisplayed());
         clickOnGoogleSignInButton.click();
+        System.out.println(clickOnGoogleSignInButton.isEnabled());
         System.out.println("clicked on google sign in button..");
     }
 
@@ -55,7 +57,7 @@ public class LoginPage {
     }
 
     public void passwordInputBox() throws InterruptedException {
-        WebElement enterPassword = driver.findElement(By.xpath("//*[@id=\"password\"]/div[1]/div/div[1]/input"));
+        WebElement enterPassword = driver.findElement(By.cssSelector(".whsOnd.zHQkBf"));
         enterPassword.sendKeys(cred.getPassword());
         Thread.sleep(2000);
         enterPassword.sendKeys(Keys.ENTER);

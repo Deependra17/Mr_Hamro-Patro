@@ -15,7 +15,7 @@ public class LoginUtils {
         this.driver = driver;
     }
     public void loginSetUp() throws InterruptedException {
-        log.profile(driver);
+        log.profile();
         log.loginButton();
         log.googleSignInButton();
         this.parentHandle = driver.getWindowHandle();
@@ -40,6 +40,7 @@ public class LoginUtils {
         }
         log.emailInputBox();
         log.passwordInputBox();
+        driver.switchTo().window(parentHandle);
     }
 }
 

@@ -28,7 +28,7 @@ public static WebDriver initializeDriver(String browserType) {
         eventDetail.click();
         System.out.println("Clicked on today's event");
     }
-    public void commentSection() {
+    public void commentSection() throws InterruptedException {
         WebElement commentBox = driver.findElement(By.id("comment"));
         wait.until(ExpectedConditions.visibilityOf(commentBox));
         String[] comments = {
@@ -43,6 +43,7 @@ public static WebDriver initializeDriver(String browserType) {
         commentBox.sendKeys(randomComment);
         commentBox.sendKeys(Keys.ENTER);
         System.out.println("Random comment sent: " + randomComment);
+        Thread.sleep(5000);
     }
 
     public void likeIcon() {

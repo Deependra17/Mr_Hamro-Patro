@@ -14,10 +14,12 @@ public class TestCommentFunctionality {
 
     @BeforeMethod
     public void beforeMethod() throws InterruptedException {
+        System.out.println("Before Method Started");
         setUp = new TestSetUp(driver);
         setUp.setUp("chrome");
         driver = setUp.getDriver();
         commentPage = new CommentPage(driver);
+        System.out.println("Before Method Completed.");
 
     }
 
@@ -27,9 +29,10 @@ public class TestCommentFunctionality {
     }
 
     @Test
-    public void commentTest() {
+    public void commentTest() throws InterruptedException {
         System.out.println("Test initiated successfully..");
         commentPage.eventDetailPage(driver);
-        commentPage.commentSection();
+        System.out.println("test started..");
+            commentPage.commentSection();
     }
 }
